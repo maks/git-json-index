@@ -1,6 +1,6 @@
 # git-json-index
 
-A git index as a simpel json file
+A git index as a json file
 
 
 ```javascript
@@ -9,7 +9,33 @@ A git index as a simpel json file
 
 ## API
 
-Same as git-mem-index
+#### jsonindex(path)
+
+Initialise with file path to json file
+eg.
+
+```javascript
+
+var load = require('git-fs-repo')
+  , init = require('git-init-index')
+  , jsonindex = require('git-json-index')
+  , index = require('git-index')
+  
+jsonindex('jsindex')  
+index(jsonindex)
+
+load('.git', function(err, git) {
+  var head = git.ref('HEAD').hash
+  git.find(head, gothead)
+
+  function gothead(err, commit) {
+    console.log("head commit:"+commit.message());
+    init(commit, git.find.bind(git), index.add)
+  }
+})    
+    
+    
+```
 
 ## Compatibility
 
