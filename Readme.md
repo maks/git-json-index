@@ -6,6 +6,7 @@ A git index as a json file
 ```javascript
 //TODO
 ```
+for now see test.js
 
 ## API
 
